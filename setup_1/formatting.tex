@@ -1,0 +1,135 @@
+%%% SYMBOLS USED BY NUMBERINGS, ENVIRONMENTS, ... %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \renewcommand*\qedsymbol{$\blacksquare$} % alternative QED symbol
+\renewcommand{\thefootnote}{\arabic{footnote}} % normal footnotes on page
+\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}} % footnotes on minipages, e.g. in mdframed environments
+
+%%% MDFRAMED STYLES %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% thick frame and bar for title
+
+\mdfdefinestyle{style-box}{
+  linewidth=2pt,
+  linecolor=Gray!20,
+%   roundcorner=3pt,
+  innerleftmargin=0.5\baselineskip,
+  innerrightmargin=0.5\baselineskip,
+  innertopmargin=0.4\baselineskip,
+  innerbottommargin=0.4\baselineskip,
+  frametitlebackgroundcolor=Gray!20,
+  frametitleaboveskip=0.3pt,
+  frametitlebelowskip=0.3pt,
+  theoremseparator=,
+  theoremspace=\hfill,
+  theoremtitlefont=\mdseries\scshape,
+  nobreak=true
+}
+
+% highlighted background
+
+\mdfdefinestyle{style-background}{
+  hidealllines=true,
+  backgroundcolor=Gray!5,
+  innerleftmargin=0.5\baselineskip,
+  innerrightmargin=0.5\baselineskip,
+  innertopmargin=0.4\baselineskip,
+  innerbottommargin=0.4\baselineskip,
+}
+
+% thin frame
+
+\mdfdefinestyle{style-thinframe}{
+  linewidth=0.4pt,
+  linecolor=Gray!30,
+  innerleftmargin=0.5\baselineskip,
+  innerrightmargin=0.5\baselineskip,
+  innertopmargin=0.4\baselineskip,
+  innerbottommargin=0.4\baselineskip,
+}
+
+%%% ENVIRONMENTS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Definition
+
+\mdtheorem[
+  style=style-box,
+  linecolor=color-definition,
+  frametitlebackgroundcolor=color-definition
+]{definition}{\definitionname}[section]
+
+% Theorem
+
+\mdtheorem[
+  style=style-box,
+  linecolor=color-theorem,
+  frametitlebackgroundcolor=color-theorem,
+  font=\itshape
+]{theorem}{\theoremname}[section]
+
+% Proposition
+
+\mdtheorem[
+  style=style-box,
+  linecolor=color-proposition,
+  frametitlebackgroundcolor=color-proposition,
+  font=\itshape
+]{proposition}[theorem]{\propositionname}
+
+% Corollary
+
+\mdtheorem[
+  style=style-box,
+  linecolor=color-corollary,
+  frametitlebackgroundcolor=color-corollary,
+  font=\itshape
+]{corollary}[theorem]{\corollaryname}
+
+% Lemma
+
+\mdtheorem[
+  style=style-box,
+  linecolor=color-lemma,
+  frametitlebackgroundcolor=color-lemma,
+  font=\itshape
+]{lemma}[theorem]{\lemmaname}
+
+\theoremstyle{remark}
+
+% Remark
+
+\newtheorem*{remark}{\remarkname}
+\surroundwithmdframed[
+  style=style-background,
+  backgroundcolor=color-remark
+]{remark}
+
+% Enumeration Remark
+
+\newenvironment{enumremark}{
+  \begin{remark}
+    \begin{enumerate}[(a)]
+      \item[]
+}{
+    \end{enumerate}
+  \end{remark}
+}
+
+% Example
+
+\newtheorem*{example}{\examplename}
+\surroundwithmdframed[
+  style=style-background,
+  backgroundcolor=color-example
+]{example}
+
+% Proof
+
+\surroundwithmdframed[
+  style=style-thinframe
+]{proof}
+
+%%% TEXT FORMATTING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% definitions
+
+\newcommand*{\df}[1]{\colorbox{color-definition}{\emph{#1}}}
